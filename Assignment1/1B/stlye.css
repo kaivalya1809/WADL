@@ -1,0 +1,31 @@
+.navigation > ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    align-items: center;
+    list-style: none;
+    height: 35px;
+}
+.navigation{
+    background-color: grey;
+}
+.navigation li{
+    padding: 5px;
+}
+.navigation a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+.navigation a:hover{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+}
+.navigation ul li  h3{
+    align-self: flex-start;
+}
+#search1 > *{
+    display: flex;
+}
+
