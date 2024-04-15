@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Transformation</title>
+<style>
+  #shape {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    cursor: pointer;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="shape"></div>
+<button id="changeShapeBtn">Change Shape</button>
+
+<script>
+$(document).ready(function() {
+  var isRectangle = true;
+  var isDragging = false;
+  var startX, startY;
+
+  $('#shape').on('mousedown', function(event) {
+    isDragging = true;
+    startX = event.clientX - parseInt($('#shape').css('left'));
+    startY = event.clientY - parseInt($('#shape').css('top'));
+  });
+
+  $(document).on('mousemove', function(event) {
+    if (isDragging) {
+      var newX = event.clientX - startX;
+      var newY = event.clientY - startY;
+      $('#shape').css({left: newX, top: newY});
+    }
+  });
+
+  $(document).on('mouseup', function() {
+    isDragging = false;
+  });
+
+  $('#changeShapeBtn').on('click', function() {
+    if (isRectangle) {
+      $('#shape').css({
+        'border-radius': '50%',
+        'width': '100px',
+        'height': '100px'
+      });
+      isRectangle = false;
+    } else {
+      $('#shape').css({
+        'border-radius': '0',
+        'width': '100px',
+        'height': '100px'
+      });
+      isRectangle = true;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
